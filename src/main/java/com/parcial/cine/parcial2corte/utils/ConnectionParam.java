@@ -10,6 +10,6 @@ package com.parcial.cine.parcial2corte.utils;
  */
 public class ConnectionParam {
     public static final String url = "jdbc:mysql://localhost/cine";
-    public static final String user = "test";
-    public static final String password = "fb1241c4";
+    public static final String user = "root";
+    public static final String password = "";
 }

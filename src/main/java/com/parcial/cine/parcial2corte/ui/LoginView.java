@@ -116,6 +116,9 @@ public class LoginView extends javax.swing.JFrame {
         
         if(this.service.validateLogin(username, password)){
            this.setVisible(false);
+            MenuView menuView = new MenuView();
+            menuView.setLocationRelativeTo(null);
+            menuView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
         }
