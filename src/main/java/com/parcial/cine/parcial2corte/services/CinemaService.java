@@ -4,29 +4,29 @@
  */
 package com.parcial.cine.parcial2corte.services;
 
-import com.parcial.cine.parcial2corte.dao.HallDao;
-import com.parcial.cine.parcial2corte.dto.Hall;
-import com.parcial.cine.parcial2corte.repositories.HallRepository;
+import com.parcial.cine.parcial2corte.dao.CinemaDao;
+import com.parcial.cine.parcial2corte.dto.Cinema;
+import com.parcial.cine.parcial2corte.repositories.CinemaRepository;
 
 /**
  *
  * @author bparra
  */
-public class HallService {
-    private final HallRepository repository;
+public class CinemaService {
+    private final CinemaRepository repository;
     private final FunctionService functionService;
     
-    public HallService() {
-        this.repository = new HallRepository();
+    public CinemaService() {
+        this.repository = new CinemaRepository();
         this.functionService = new FunctionService();
     }
     
-    public boolean validateHall(String code) {
+    public boolean validateCinema(String code) {
         return repository.existHall(code);
     }
     
-    public boolean createHall(Hall dto) {
-        int response = repository.save(HallDao.createDaoFromEntity(dto));
+    public boolean createCinema(Cinema dto) {
+        int response = repository.save(CinemaDao.createDaoFromDto(dto));
         return response > 0;
     }
     

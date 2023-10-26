@@ -8,12 +8,12 @@ package com.parcial.cine.parcial2corte.dto;
  *
  * @author bparra
  */
-public class Hall {
+public class Cinema {
     private String name;
     private String code;
     private int capacity;
 
-    public Hall(String name, String code, int capacity) {
+    public Cinema(String name, String code, int capacity) {
         this.name = name;
         this.code = code;
         this.capacity = capacity;

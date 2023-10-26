@@ -4,10 +4,8 @@
  */
 package com.parcial.cine.parcial2corte.dao;
 
-import com.parcial.cine.parcial2corte.config.SqlConnection;
 import com.parcial.cine.parcial2corte.dto.User;
 import com.parcial.cine.parcial2corte.dto.enums.Role;
-import com.parcial.cine.parcial2corte.utils.ConnectionParam;
 import java.sql.Connection;
 
 /**
@@ -21,7 +19,6 @@ public class AdminDao {
     private String password;
     private String correo;
     private Role role;
-    private Connection connection;
 
     public AdminDao(String nombre, String username, String password, String correo, Role role) {
         this.nombre = nombre;
@@ -29,11 +26,6 @@ public class AdminDao {
         this.password = password;
         this.correo = correo;
         this.role = role;
-        this.connection = SqlConnection.getConexion(
-                ConnectionParam.url,
-                ConnectionParam.user,
-                ConnectionParam.password
-        );
     }
     
     public User toDto() {
@@ -95,14 +87,4 @@ public class AdminDao {
     public void setRole(Role role) {
         this.role = role;
     }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void setConnection(Connection connection) {
-        this.connection = connection;
-    }
-    
-    
 }

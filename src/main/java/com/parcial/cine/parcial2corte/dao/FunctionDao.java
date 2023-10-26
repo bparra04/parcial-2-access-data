@@ -38,7 +38,7 @@ public class FunctionDao {
                 dto.getCode(), 
                 dto.getDate(), 
                 dto.getMovieCode(),
-                dto.getHallCode());
+                dto.getCinemaCode());
     }
     
     public String getCodigo() {

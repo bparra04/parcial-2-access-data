@@ -12,13 +12,13 @@ public class Function {
     private String code;
     private String date;
     private String movieCode;
-    private String hallCode;
+    private String cinemaCode;
 
-    public Function(String code, String date, String movieCode, String hallCode) {
+    public Function(String code, String date, String movieCode, String cinemaCode) {
         this.code = code;
         this.date = date;
         this.movieCode = movieCode;
-        this.hallCode = hallCode;
+        this.cinemaCode = cinemaCode;
     }
 
     public String getCode() {
@@ -45,12 +45,12 @@ public class Function {
         this.movieCode = movieCode;
     }
 
-    public String getHallCode() {
-        return hallCode;
+    public String getCinemaCode() {
+        return cinemaCode;
     }
 
-    public void setHallCode(String hallCode) {
-        this.hallCode = hallCode;
+    public void setCinemaCode(String hallCode) {
+        this.cinemaCode = hallCode;
     }
     
     

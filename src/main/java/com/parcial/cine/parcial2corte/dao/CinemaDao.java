@@ -4,30 +4,30 @@
  */
 package com.parcial.cine.parcial2corte.dao;
 
-import com.parcial.cine.parcial2corte.dto.Hall;
+import com.parcial.cine.parcial2corte.dto.Cinema;
 
 /**
  *
  * @author bparra
  */
-public class HallDao {
+public class CinemaDao {
     public static final String TABLE_NAME= "sala";
     private String nombre;
     private String codigo;
     private int capacidad;
 
-    public HallDao(String nombre, String codigo, int capacidad) {
+    public CinemaDao(String nombre, String codigo, int capacidad) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.capacidad = capacidad;
     }
     
-    public Hall toDto() {
-        return new Hall(this.nombre, this.codigo, this.capacidad);
+    public Cinema toDto() {
+        return new Cinema(this.nombre, this.codigo, this.capacidad);
     }
     
-    public static HallDao createDaoFromEntity(Hall dto) {
-        return new HallDao(dto.getName(), dto.getCode(), dto.getCapacity());
+    public static CinemaDao createDaoFromDto(Cinema dto) {
+        return new CinemaDao(dto.getName(), dto.getCode(), dto.getCapacity());
     }
 
     public String getNombre() {

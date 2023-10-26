@@ -37,7 +37,7 @@ public class AdminRepository implements BaseRepository<AdminDao>{
             ps.setString(5, user.getRole().toString());
             rest = ps.executeUpdate();
             ps.close();
-            user.getConnection().close();
+            this.getConnection().close();
         }catch(SQLException  e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

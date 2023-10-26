@@ -15,19 +15,19 @@ import com.parcial.cine.parcial2corte.repositories.FunctionRepository;
 public class FunctionService {
     private final FunctionRepository repository;
     private final MovieService movieService;
-    private final HallService hallService;
+    private final CinemaService cinemaService;
     
     public FunctionService() {
         this.repository = new FunctionRepository();
         this.movieService = new MovieService();
-        this.hallService = new HallService();
+        this.cinemaService = new CinemaService();
     }
     
     public boolean createFunction(Function dto) {
         //Validar codigo de pelicula
         if(!movieService.validateMovie(dto.getMovieCode())) return false;
         //Validar codigo de sala
-        if(!hallService.validateHall(dto.getHallCode())) return false;
+        if(!cinemaService.validateCinema(dto.getCinemaCode())) return false;
         
         //Crear funcion
         int response = repository.save(FunctionDao.createDaoFromDto(dto));

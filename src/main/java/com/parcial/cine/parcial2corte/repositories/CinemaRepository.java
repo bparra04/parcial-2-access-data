@@ -5,8 +5,8 @@
 package com.parcial.cine.parcial2corte.repositories;
 
 import com.parcial.cine.parcial2corte.config.SqlConnection;
-import com.parcial.cine.parcial2corte.dao.HallDao;
-import com.parcial.cine.parcial2corte.dto.Hall;
+import com.parcial.cine.parcial2corte.dao.CinemaDao;
+import com.parcial.cine.parcial2corte.dto.Cinema;
 import com.parcial.cine.parcial2corte.utils.ConnectionParam;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,14 +20,14 @@ import javax.swing.JOptionPane;
  *
  * @author bparra
  */
-public class HallRepository implements BaseRepository<HallDao>{
+public class CinemaRepository implements BaseRepository<CinemaDao>{
     private Connection conn;
 
     @Override
-    public int save(HallDao hall) {
+    public int save(CinemaDao hall) {
         int rest=0;
         try{
-            String query = "INSERT INTO " + HallDao.TABLE_NAME + " (Nombre, Codigo, Capacidad) VALUES (?,?,?)";
+            String query = "INSERT INTO " + CinemaDao.TABLE_NAME + " (Nombre, Codigo, Capacidad) VALUES (?,?,?)";
             PreparedStatement ps = this.getConnection().prepareStatement(query);
             ps.setString(1, hall.getNombre());
             ps.setString(2, hall.getCodigo());
@@ -44,7 +44,7 @@ public class HallRepository implements BaseRepository<HallDao>{
     @Override
     public boolean delete(String code) {
         try{
-            String query = "delete from " + HallDao.TABLE_NAME + " where Codigo = ?";
+            String query = "delete from " + CinemaDao.TABLE_NAME + " where Codigo = ?";
             PreparedStatement preparedStmt = this.getConnection().prepareStatement(query);
             preparedStmt.setString(1, code);
             preparedStmt.execute();
@@ -72,7 +72,7 @@ public class HallRepository implements BaseRepository<HallDao>{
     public boolean existHall(String hallCode) {
         boolean flag = false;
         try {
-            String query = "select Nombre,Codigo,Capacidad from "+ HallDao.TABLE_NAME +" where Codigo='" + hallCode + "'";
+            String query = "select Nombre,Codigo,Capacidad from "+ CinemaDao.TABLE_NAME +" where Codigo='" + hallCode + "'";
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) flag=true;

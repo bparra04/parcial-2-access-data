@@ -5,7 +5,6 @@
 package com.parcial.cine.parcial2corte.repositories;
 
 import java.sql.Connection;
-import java.util.List;
 
 /**
  *
