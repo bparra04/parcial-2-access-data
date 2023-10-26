@@ -14,11 +14,9 @@ import com.parcial.cine.parcial2corte.repositories.MovieRepository;
  */
 public class MovieService {
     private final MovieRepository repository;
-    private final FunctionService functionService;
     
     public MovieService() {
         this.repository = new MovieRepository();
-        this.functionService = new FunctionService();
     }
     
     public boolean createMovie(Movie dto) {
@@ -31,8 +29,6 @@ public class MovieService {
     }
     
     public boolean deleteMovie(String code) {
-        //Validar si la pelicula no esta asociada a una funcion
-        if(functionService.findFunctionByMovieCode(code)) return false;
         return repository.delete(code);
     }
     

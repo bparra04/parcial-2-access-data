@@ -6,14 +6,12 @@ package com.parcial.cine.parcial2corte.repositories;
 
 import com.parcial.cine.parcial2corte.config.SqlConnection;
 import com.parcial.cine.parcial2corte.dao.CinemaDao;
-import com.parcial.cine.parcial2corte.dto.Cinema;
 import com.parcial.cine.parcial2corte.utils.ConnectionParam;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**

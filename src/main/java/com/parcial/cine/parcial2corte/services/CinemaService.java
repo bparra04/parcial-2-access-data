@@ -14,11 +14,9 @@ import com.parcial.cine.parcial2corte.repositories.CinemaRepository;
  */
 public class CinemaService {
     private final CinemaRepository repository;
-    private final FunctionService functionService;
     
     public CinemaService() {
         this.repository = new CinemaRepository();
-        this.functionService = new FunctionService();
     }
     
     public boolean validateCinema(String code) {
@@ -31,8 +29,6 @@ public class CinemaService {
     }
     
     public boolean deleteCinema(String code) {
-        //Validar si la sala no esta asociada a una funcion
-        if(functionService.findFunctionByCinemaCode(code)) return false;
         return repository.delete(code);
     }
 }
