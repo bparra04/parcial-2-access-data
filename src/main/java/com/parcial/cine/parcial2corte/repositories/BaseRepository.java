@@ -15,5 +15,4 @@ public interface BaseRepository<T> {
     Connection getConnection();
     int save(T t);
     boolean delete(String code);
-    List<T> find();
 }

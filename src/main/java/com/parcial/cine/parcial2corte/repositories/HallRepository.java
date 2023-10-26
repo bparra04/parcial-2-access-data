@@ -81,11 +81,5 @@ public class HallRepository implements BaseRepository<HallDao>{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return flag;
-    }
-    
-    @Override
-    public List<HallDao> find() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+    }    
 }

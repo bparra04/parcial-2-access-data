@@ -30,6 +30,10 @@ public class MovieDao {
             MovieClasification.valueOf(this.clasificacion)
         );
     }
+    
+    public static MovieDao createDaoFromDto(Movie dto) {
+        return new MovieDao(dto.getName(), dto.getCode(), dto.getClasification().VALUE);
+    }
  
     public String getNombre() {
         return nombre;

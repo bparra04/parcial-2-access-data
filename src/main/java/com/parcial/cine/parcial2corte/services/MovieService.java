@@ -4,6 +4,8 @@
  */
 package com.parcial.cine.parcial2corte.services;
 
+import com.parcial.cine.parcial2corte.dao.MovieDao;
+import com.parcial.cine.parcial2corte.dto.Movie;
 import com.parcial.cine.parcial2corte.repositories.MovieRepository;
 
 /**
@@ -17,6 +19,11 @@ public class MovieService {
     public MovieService() {
         this.repository = new MovieRepository();
         this.functionService = new FunctionService();
+    }
+    
+    public boolean createMovie(Movie dto) {
+        int response = repository.save(MovieDao.createDaoFromDto(dto));
+        return response > 0;
     }
     
     public boolean validateMovie(String code) {

@@ -6,32 +6,30 @@ package com.parcial.cine.parcial2corte.repositories;
 
 import com.parcial.cine.parcial2corte.config.SqlConnection;
 import com.parcial.cine.parcial2corte.dao.MovieDao;
-import com.parcial.cine.parcial2corte.dto.Movie;
 import com.parcial.cine.parcial2corte.utils.ConnectionParam;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author bparra
  */
-public class MovieRepository implements BaseRepository<Movie>{
+public class MovieRepository implements BaseRepository<MovieDao>{
     private Connection conn;
     
     @Override
-    public int save(Movie movie) {
+    public int save(MovieDao movie) {
         int rest=0;
         try{
             String query = "INSERT INTO " + MovieDao.TABLE_NAME + " (Nombre, Codigo, Clasificacion) VALUES (?,?,?)";
             PreparedStatement ps = this.getConnection().prepareStatement(query);
-            ps.setString(1, movie.getName());
-            ps.setString(2, movie.getCode());
-            ps.setString(3, movie.getClasification().VALUE);
+            ps.setString(1, movie.getNombre());
+            ps.setString(2, movie.getCodigo());
+            ps.setString(3, movie.getClasificacion());
             rest = ps.executeUpdate();
             ps.close();
             this.getConnection().close();
@@ -56,10 +54,6 @@ public class MovieRepository implements BaseRepository<Movie>{
         return false;
     }
 
-    @Override
-    public List<Movie> find() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public Connection getConnection() {

@@ -60,7 +60,6 @@ public class AdminRepository implements BaseRepository<AdminDao>{
         return false;
     }
 
-    @Override
     public List<AdminDao> find() {
         List<AdminDao> list = new ArrayList<>();
         try {

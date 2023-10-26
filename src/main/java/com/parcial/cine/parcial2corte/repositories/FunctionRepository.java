@@ -47,11 +47,6 @@ public class FunctionRepository implements BaseRepository<FunctionDao> {
     }
 
     @Override
-    public List<FunctionDao> find() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public Connection getConnection() {
         if (this.conn == null) {
             this.conn = SqlConnection.getConexion(
