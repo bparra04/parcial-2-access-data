@@ -25,6 +25,10 @@ public class HallDao {
     public Hall toDto() {
         return new Hall(this.nombre, this.codigo, this.capacidad);
     }
+    
+    public static HallDao createDaoFromEntity(Hall dto) {
+        return new HallDao(dto.getName(), dto.getCode(), dto.getCapacity());
+    }
 
     public String getNombre() {
         return nombre;

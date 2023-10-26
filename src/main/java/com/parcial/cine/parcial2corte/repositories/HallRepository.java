@@ -20,18 +20,18 @@ import javax.swing.JOptionPane;
  *
  * @author bparra
  */
-public class HallRepository implements BaseRepository<Hall>{
+public class HallRepository implements BaseRepository<HallDao>{
     private Connection conn;
 
     @Override
-    public int save(Hall hall) {
+    public int save(HallDao hall) {
         int rest=0;
         try{
             String query = "INSERT INTO " + HallDao.TABLE_NAME + " (Nombre, Codigo, Capacidad) VALUES (?,?,?)";
             PreparedStatement ps = this.getConnection().prepareStatement(query);
-            ps.setString(1, hall.getName());
-            ps.setString(2, hall.getCode());
-            ps.setInt(3, hall.getCapacity());
+            ps.setString(1, hall.getNombre());
+            ps.setString(2, hall.getCodigo());
+            ps.setInt(3, hall.getCapacidad());
             rest = ps.executeUpdate();
             ps.close();
             this.getConnection().close();
@@ -84,7 +84,7 @@ public class HallRepository implements BaseRepository<Hall>{
     }
     
     @Override
-    public List<Hall> find() {
+    public List<HallDao> find() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

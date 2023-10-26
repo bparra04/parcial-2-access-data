@@ -5,6 +5,7 @@
 package com.parcial.cine.parcial2corte.ui;
 
 import com.parcial.cine.parcial2corte.services.AdminService;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +51,17 @@ public class LoginView extends javax.swing.JFrame {
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
+            }
+        });
+        loginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginButtonKeyPressed(evt);
+            }
+        });
+
+        passwordText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordTextKeyPressed(evt);
             }
         });
 
@@ -108,6 +120,16 @@ public class LoginView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+    }//GEN-LAST:event_loginButtonKeyPressed
+
+    private void passwordTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.loginButton.doClick();
+        }
+    }//GEN-LAST:event_passwordTextKeyPressed
 
     /**
      * @param args the command line arguments

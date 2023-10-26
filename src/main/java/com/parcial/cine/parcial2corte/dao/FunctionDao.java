@@ -33,6 +33,14 @@ public class FunctionDao {
         );
     }
     
+    public static FunctionDao createDaoFromDto(Function dto) {
+        return new FunctionDao(
+                dto.getCode(), 
+                dto.getDate(), 
+                dto.getMovieCode(),
+                dto.getHallCode());
+    }
+    
     public String getCodigo() {
         return codigo;
     }
