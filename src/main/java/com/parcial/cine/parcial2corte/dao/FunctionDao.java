@@ -6,12 +6,9 @@ package com.parcial.cine.parcial2corte.dao;
 
 import com.parcial.cine.parcial2corte.dto.Function;
 
-/**
- *
- * @author bparra
- */
 public class FunctionDao {
-    public static final String TABLE_NAME= "funcion";
+
+    public static final String TABLE_NAME = "funcion";
     private String codigo;
     private String fecha;
     private String codigoPelicula;
@@ -26,21 +23,21 @@ public class FunctionDao {
 
     public Function toDto() {
         return new Function(
-            codigo, 
-            codigo, 
-            codigoPelicula, 
-            codigoSala
+                codigo,
+                codigo,
+                codigoPelicula,
+                codigoSala
         );
     }
-    
+
     public static FunctionDao createDaoFromDto(Function dto) {
         return new FunctionDao(
-                dto.getCode(), 
-                dto.getDate(), 
+                dto.getCode(),
+                dto.getDate(),
                 dto.getMovieCode(),
                 dto.getCinemaCode());
     }
-    
+
     public String getCodigo() {
         return codigo;
     }
@@ -72,6 +69,5 @@ public class FunctionDao {
     public void setCodigoSala(String codigoSala) {
         this.codigoSala = codigoSala;
     }
-    
-    
+
 }

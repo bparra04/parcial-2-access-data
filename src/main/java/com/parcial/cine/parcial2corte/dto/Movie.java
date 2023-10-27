@@ -6,10 +6,7 @@ package com.parcial.cine.parcial2corte.dto;
 
 import com.parcial.cine.parcial2corte.dto.enums.MovieClasification;
 
-/**
- *
- * @author bparra
- */
+
 public class Movie {
     private String name;
     private String code;

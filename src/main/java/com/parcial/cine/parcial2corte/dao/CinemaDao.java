@@ -6,12 +6,9 @@ package com.parcial.cine.parcial2corte.dao;
 
 import com.parcial.cine.parcial2corte.dto.Cinema;
 
-/**
- *
- * @author bparra
- */
 public class CinemaDao {
-    public static final String TABLE_NAME= "sala";
+
+    public static final String TABLE_NAME = "sala";
     private String nombre;
     private String codigo;
     private int capacidad;
@@ -21,11 +18,11 @@ public class CinemaDao {
         this.codigo = codigo;
         this.capacidad = capacidad;
     }
-    
+
     public Cinema toDto() {
         return new Cinema(this.nombre, this.codigo, this.capacidad);
     }
-    
+
     public static CinemaDao createDaoFromDto(Cinema dto) {
         return new CinemaDao(dto.getName(), dto.getCode(), dto.getCapacity());
     }
@@ -53,6 +50,5 @@ public class CinemaDao {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
-    
-    
+
 }

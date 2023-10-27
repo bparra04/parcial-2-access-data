@@ -6,12 +6,11 @@ package com.parcial.cine.parcial2corte.repositories;
 
 import java.sql.Connection;
 
-/**
- *
- * @author bparra
- */
 public interface BaseRepository<T> {
+
     Connection getConnection();
+
     int save(T t);
+
     boolean delete(String code);
 }

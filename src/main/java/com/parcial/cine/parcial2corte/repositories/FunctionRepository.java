@@ -15,17 +15,15 @@ import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bparra
- */
+
 public class FunctionRepository implements BaseRepository<FunctionDao> {
+
     private Connection conn;
-    
+
     @Override
     public int save(FunctionDao function) {
-        int rest=0;
-        try{
+        int rest = 0;
+        try {
             String query = "INSERT INTO " + FunctionDao.TABLE_NAME + " (codigo_funcion, fecha, codigo_pelicula, codigo_sala) VALUES (?,?,?,?)";
             PreparedStatement ps = this.getConnection().prepareStatement(query);
             ps.setString(1, function.getCodigo());
@@ -35,7 +33,7 @@ public class FunctionRepository implements BaseRepository<FunctionDao> {
             rest = ps.executeUpdate();
             ps.close();
             this.getConnection().close();
-        }catch(SQLException  e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return rest;
@@ -43,43 +41,79 @@ public class FunctionRepository implements BaseRepository<FunctionDao> {
 
     @Override
     public boolean delete(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean deleted = false;
+        try {
+            String query = "DELETE FROM " + FunctionDao.TABLE_NAME + " WHERE codigo_funcion=?";
+            PreparedStatement ps = this.getConnection().prepareStatement(query);
+            ps.setString(1, code);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                deleted = true;
+            }
+            ps.close();
+            this.getConnection().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return deleted;
     }
 
     @Override
     public Connection getConnection() {
         if (this.conn == null) {
             this.conn = SqlConnection.getConexion(
-                ConnectionParam.url,
-                ConnectionParam.user,
-                ConnectionParam.password
+                    ConnectionParam.url,
+                    ConnectionParam.user,
+                    ConnectionParam.password
             );
             return conn;
         }
         return this.conn;
-    }    
-    
+    }
+
+    public boolean findByFunctionCode(String functionCode) {
+        boolean flag = false;
+        try {
+            String query = "SELECT codigo_funcion, fecha, codigo_pelicula, codigo_sala FROM " + FunctionDao.TABLE_NAME + " WHERE codigo_funcion=?";
+            PreparedStatement ps = this.getConnection().prepareStatement(query);
+            ps.setString(1, functionCode);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                flag = true;
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return flag;
+    }
+
     public boolean findByCinemaCode(String cinemaCode) {
         boolean flag = false;
         try {
-            String query = "select codigo_funcion, fecha, codigo_pelicula, codigo_sala from "+ FunctionDao.TABLE_NAME +" where codigo_sala='" + cinemaCode + "'";
+            String query = "select codigo_funcion, fecha, codigo_pelicula, codigo_sala from " + FunctionDao.TABLE_NAME + " where codigo_sala='" + cinemaCode + "'";
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) flag=true;
+            if (rs.next()) {
+                flag = true;
+            }
             this.getConnection().close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return flag;
     }
-    
+
     public boolean findByMovieCode(String movieCode) {
         boolean flag = false;
         try {
-            String query = "select codigo_funcion, fecha, codigo_pelicula, codigo_sala from "+ FunctionDao.TABLE_NAME +" where codigo_pelicula='" + movieCode + "'";
+            String query = "select codigo_funcion, fecha, codigo_pelicula, codigo_sala from " + FunctionDao.TABLE_NAME + " where codigo_pelicula='" + movieCode + "'";
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) flag=true;
+            if (rs.next()) {
+                flag = true;
+            }
             this.getConnection().close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

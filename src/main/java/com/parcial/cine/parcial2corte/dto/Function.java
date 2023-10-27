@@ -4,11 +4,8 @@
  */
 package com.parcial.cine.parcial2corte.dto;
 
-/**
- *
- * @author bparra
- */
 public class Function {
+
     private String code;
     private String date;
     private String movieCode;
@@ -52,6 +49,5 @@ public class Function {
     public void setCinemaCode(String hallCode) {
         this.cinemaCode = hallCode;
     }
-    
-    
+
 }

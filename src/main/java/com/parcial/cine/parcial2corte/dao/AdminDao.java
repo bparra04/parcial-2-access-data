@@ -8,12 +8,9 @@ import com.parcial.cine.parcial2corte.dto.User;
 import com.parcial.cine.parcial2corte.dto.enums.Role;
 import java.sql.Connection;
 
-/**
- *
- * @author bparra
- */
 public class AdminDao {
-    public static final String TABLE_NAME= "administradores";
+
+    public static final String TABLE_NAME = "administradores";
     private String nombre;
     private String username;
     private String password;
@@ -27,21 +24,21 @@ public class AdminDao {
         this.correo = correo;
         this.role = role;
     }
-    
+
     public User toDto() {
         return new User(
-            this.nombre, 
-            this.username, 
-            this.password, 
-            this.correo, 
-            this.role
+                this.nombre,
+                this.username,
+                this.password,
+                this.correo,
+                this.role
         );
     }
-    
+
     public static AdminDao createDaoFromDto(User dto) {
         return new AdminDao(
                 dto.getName(),
-                dto.getUsername(), 
+                dto.getUsername(),
                 dto.getPassword(),
                 dto.getEmail(),
                 dto.getRole()

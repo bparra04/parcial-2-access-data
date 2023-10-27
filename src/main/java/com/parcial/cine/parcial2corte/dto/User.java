@@ -6,10 +6,7 @@ package com.parcial.cine.parcial2corte.dto;
 
 import com.parcial.cine.parcial2corte.dto.enums.Role;
 
-/**
- *
- * @author bparra
- */
+
 public class User {
     private String name;
     private String username;

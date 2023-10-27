@@ -17,17 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bparra
- */
-public class AdminRepository implements BaseRepository<AdminDao>{
+public class AdminRepository implements BaseRepository<AdminDao> {
+
     private Connection conn;
-    
+
     @Override
     public int save(AdminDao user) {
-        int rest=0;
-        try{
+        int rest = 0;
+        try {
             String query = "INSERT INTO " + AdminDao.TABLE_NAME + " (nombre, username, password, correo, rol) VALUES (?, ?,?,?,?)";
             PreparedStatement ps = this.getConnection().prepareStatement(query);
             ps.setString(1, user.getNombre());
@@ -38,7 +35,7 @@ public class AdminRepository implements BaseRepository<AdminDao>{
             rest = ps.executeUpdate();
             ps.close();
             this.getConnection().close();
-        }catch(SQLException  e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return rest;
@@ -46,7 +43,7 @@ public class AdminRepository implements BaseRepository<AdminDao>{
 
     @Override
     public boolean delete(String username) {
-        try{
+        try {
             String query = "delete from " + AdminDao.TABLE_NAME + " where username = ?";
             PreparedStatement preparedStmt = this.getConnection().prepareStatement(query);
             preparedStmt.setString(1, username);
@@ -54,7 +51,7 @@ public class AdminRepository implements BaseRepository<AdminDao>{
 
             this.getConnection().close();
             return true;
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return false;
@@ -63,18 +60,18 @@ public class AdminRepository implements BaseRepository<AdminDao>{
     public List<AdminDao> find() {
         List<AdminDao> list = new ArrayList<>();
         try {
-            String query = "select nombre, username, password, correo, rol from "+ AdminDao.TABLE_NAME;
+            String query = "select nombre, username, password, correo, rol from " + AdminDao.TABLE_NAME;
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(
-                    new AdminDao(
-                            rs.getString("nombre"),
-                            rs.getString("username"),
-                            rs.getString("password"),
-                            rs.getString("correo"),
-                            Role.valueOf(rs.getString("rol"))
-                    )
+                        new AdminDao(
+                                rs.getString("nombre"),
+                                rs.getString("username"),
+                                rs.getString("password"),
+                                rs.getString("correo"),
+                                Role.valueOf(rs.getString("rol"))
+                        )
                 );
             }
             this.getConnection().close();
@@ -83,14 +80,16 @@ public class AdminRepository implements BaseRepository<AdminDao>{
         }
         return list;
     }
-    
+
     public boolean doLogin(String username, String password) {
         boolean flag = false;
         try {
-            String query = "select * from "+ AdminDao.TABLE_NAME + " where username='"+ username + "' and password='"+ password+"'";
+            String query = "select * from " + AdminDao.TABLE_NAME + " where username='" + username + "' and password='" + password + "'";
             Statement stmt = this.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) flag=true;
+            if (rs.next()) {
+                flag = true;
+            }
             this.getConnection().close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -102,12 +101,12 @@ public class AdminRepository implements BaseRepository<AdminDao>{
     public Connection getConnection() {
         if (this.conn == null) {
             return SqlConnection.getConexion(
-                ConnectionParam.url,
-                ConnectionParam.user,
-                ConnectionParam.password
+                    ConnectionParam.url,
+                    ConnectionParam.user,
+                    ConnectionParam.password
             );
         }
         return this.conn;
     }
-    
+
 }

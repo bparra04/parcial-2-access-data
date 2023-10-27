@@ -4,22 +4,19 @@
  */
 package com.parcial.cine.parcial2corte.dto.enums;
 
-/**
- *
- * @author bparra
- */
+
 public enum MovieClasification {
-    
+
     CLASIFICATION_TP("TP"),
     CLASIFICATION_7("7"),
     CLASIFICATION_12("12"),
     CLASIFICATION_15("15"),
     CLASIFICATION_18("18"),;
-    
+
     public final String VALUE;
 
     private MovieClasification(String value) {
         this.VALUE = value;
     }
-        
+
 }

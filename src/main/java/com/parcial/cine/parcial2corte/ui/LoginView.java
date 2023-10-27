@@ -8,11 +8,9 @@ import com.parcial.cine.parcial2corte.services.AdminService;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bparra
- */
+
 public class LoginView extends javax.swing.JFrame {
+
     private final AdminService service;
 
     /**
@@ -113,9 +111,9 @@ public class LoginView extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String username = this.usernameText.getText();
         String password = String.valueOf(this.passwordText.getPassword());
-        
-        if(this.service.validateLogin(username, password)){
-           this.setVisible(false);
+
+        if (this.service.validateLogin(username, password)) {
+            this.setVisible(false);
             MenuView menuView = new MenuView();
             menuView.setLocationRelativeTo(null);
             menuView.setVisible(true);
@@ -129,7 +127,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void passwordTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.loginButton.doClick();
         }
     }//GEN-LAST:event_passwordTextKeyPressed

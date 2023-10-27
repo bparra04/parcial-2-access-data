@@ -8,26 +8,23 @@ import com.parcial.cine.parcial2corte.dao.CinemaDao;
 import com.parcial.cine.parcial2corte.dto.Cinema;
 import com.parcial.cine.parcial2corte.repositories.CinemaRepository;
 
-/**
- *
- * @author bparra
- */
 public class CinemaService {
+
     private final CinemaRepository repository;
-    
+
     public CinemaService() {
         this.repository = new CinemaRepository();
     }
-    
+
     public boolean validateCinema(String code) {
         return repository.existHall(code);
     }
-    
+
     public boolean createCinema(Cinema dto) {
         int response = repository.save(CinemaDao.createDaoFromDto(dto));
         return response > 0;
     }
-    
+
     public boolean deleteCinema(String code) {
         return repository.delete(code);
     }

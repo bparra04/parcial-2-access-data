@@ -4,11 +4,8 @@
  */
 package com.parcial.cine.parcial2corte.dto;
 
-/**
- *
- * @author bparra
- */
 public class Cinema {
+
     private String name;
     private String code;
     private int capacity;
@@ -42,6 +39,5 @@ public class Cinema {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    
-    
+
 }

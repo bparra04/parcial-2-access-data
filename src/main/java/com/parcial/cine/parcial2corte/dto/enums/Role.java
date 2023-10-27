@@ -4,10 +4,6 @@
  */
 package com.parcial.cine.parcial2corte.dto.enums;
 
-/**
- *
- * @author bparra
- */
 public enum Role {
     
     ADMIN("ADMINISTRADOR");
